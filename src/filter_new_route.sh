@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ../conf/conf.sh;
-
 declare routes_file='';
 
 function show_help() {
@@ -40,6 +38,7 @@ function check_params() {
     if [ ! "$routes_file" ]; then
         echo "Prepare routes file from server.";
         prepare_routes_file;
+        routes_file="$DEFAULT_ROUTES_FILE";
     fi
     if [ ! "$routes_file" ]; then
         echo "Routes file not exist.";
@@ -52,4 +51,6 @@ function run() {
     tcpdump -xXnnvvSs 64 -i $INTERFACE | grep "^\s*$PUBLIC_IP.*>" | grep -o '>\s*[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | awk '{print $NF}' | python filter_new_route.py "$routes_file" "$OVPN_CONF";
 }
 
+cd $(dirname "$0");
+source ../conf/conf.sh;
 run "${@}";

@@ -123,7 +123,7 @@ def run(args):
             break;
         route = process_ip(ip, chnroutes);
         if (None == route):
-            print "%s doesn't found route." % ip;
+#            print "%s doesn't found route." % ip;
             continue;
         if (route[0] in routes_map):
             continue;
