@@ -1,0 +1,3 @@
+[submodule "src/chnroutes"]
+	path = src/chnroutes
+	url = https://github.com/fivesheep/chnroutes.git
