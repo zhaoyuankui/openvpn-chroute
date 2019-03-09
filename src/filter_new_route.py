@@ -131,7 +131,7 @@ def run(args):
         save_route(ovpn_conf, route, ip);
 
 if __name__ == "__main__":
-    logfile = open('/var/tmp/filter_new_route.log', 'w');
+    logfile = open('/var/tmp/filter_new_route.log', 'w+', buffering = 0);
     sys.stdout = logfile;
     run(sys.argv);
     logfile.close();
